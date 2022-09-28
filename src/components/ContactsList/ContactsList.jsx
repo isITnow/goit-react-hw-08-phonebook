@@ -50,12 +50,12 @@ const ContactsList = () => {
     return (
         <div>
             <ul className={s.contacts__list}>
-                {filteredContacts.map(({ name, phone, id }) => {
+                {filteredContacts.map(({ name, number, id }) => {
                     return (
                         <ContactsItem
                             key={id}
                             name={name}
-                            phone={phone}
+                            phone={number}
                             id={id}
                         />
                     );
