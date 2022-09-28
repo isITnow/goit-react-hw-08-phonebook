@@ -16,6 +16,23 @@ code {
     monospace;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 h1,
 h2,
 h3,
@@ -24,22 +41,5 @@ h5,
 h6,
 p {
   margin: 0;
-}
-
-ul,
-ol {
-  margin: 0;
   padding: 0;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-input {
-  margin-top: 10px;
-  padding: 8px;
-  font-size: 15px;
 }

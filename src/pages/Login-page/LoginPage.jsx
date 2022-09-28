@@ -1,18 +1,24 @@
-import { useState } from 'react';
 // import PropTypes from 'types';
+// import s from './loginPage.module.css';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginThunk } from 'redux/auth/operations-auth';
 
-import s from './loginPage.module.css';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const LoginPage = () => {
-    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const dispatch = useDispatch();
 
     const handleInputChange = evt => {
         const { name, value } = evt.target;
 
         switch (name) {
-            case 'name':
-                setName(value);
+            case 'email':
+                setEmail(value);
                 break;
             case 'password':
                 setPassword(value);
@@ -26,18 +32,51 @@ const LoginPage = () => {
     const handleFormsubmit = evt => {
         evt.preventDefault();
         console.log('Login submit');
+        const loginData = { email, password };
+        dispatch(loginThunk(loginData));
         formReset();
     };
 
     const formReset = () => {
-        setName('');
+        setEmail('');
         setPassword('');
     };
 
     return (
         <div>
             <h2>Login</h2>
-            <form
+            <Form onSubmit={handleFormsubmit}>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                        type="email"
+                        name="email"
+                        value={email}
+                        onChange={handleInputChange}
+                        placeholder="Enter email"
+                        required
+                    />
+                    <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                    </Form.Text>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        name="password"
+                        value={password}
+                        onChange={handleInputChange}
+                        placeholder="Password"
+                        required
+                    />
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                    Login
+                </Button>
+            </Form>
+            {/* <form
                 onSubmit={handleFormsubmit}
                 className={s.form}
                 autoComplete="on"
@@ -45,9 +84,9 @@ const LoginPage = () => {
                 <label className={s.label}>
                     Name
                     <input
-                        type="text"
-                        name="name"
-                        value={name}
+                        type="email"
+                        name="email"
+                        value={email}
                         onChange={handleInputChange}
                     />
                 </label>
@@ -61,7 +100,7 @@ const LoginPage = () => {
                     />
                 </label>
                 <button type="submit">Login</button>
-            </form>
+            </form> */}
         </div>
     );
 };

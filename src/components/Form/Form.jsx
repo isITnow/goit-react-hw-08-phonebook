@@ -3,7 +3,10 @@ import { toast } from 'react-toastify';
 import s from './Form.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContactThunk } from 'redux/contacts/operations-contacts';
-import { selectContacts, selectIsLoading } from 'redux/selector';
+import {
+    selectContacts,
+    selectIsLoading,
+} from 'redux/contacts/selector-contacts';
 
 const Form = () => {
     const contacts = useSelector(selectContacts);
