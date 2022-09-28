@@ -5,7 +5,7 @@ import axios from 'axios';
 //     params: {},
 // });
 
-const token = {
+const headerToken = {
     set(token) {
         axios.defaults.headers.common.Authorization = `Bearer ${token}`;
     },
@@ -18,23 +18,30 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const registerUser = async profile => {
     const { data } = await axios.post('/users/signup', profile);
-    token.set(data.token);
+    headerToken.set(data.token);
     return data;
 };
 
 const loginUser = async loginData => {
     const { data } = await axios.post('/users/login', loginData);
-    token.set(data.token);
+    headerToken.set(data.token);
     return data;
 };
 
 const logoutUser = async id => {
     await axios.delete(`/users/logout`);
-    token.unset();
+    headerToken.unset();
+};
+
+const getCurrentUser = async () => {
+    const { data } = await axios.get('/users/current');
+    return data;
 };
 
 export const authAPI = {
     registerUser,
     loginUser,
     logoutUser,
+    getCurrentUser,
+    headerToken,
 };
