@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { authAPI } from 'services/authAPI';
 
 export const registerThunk = createAsyncThunk(
     'auth/register',
@@ -6,17 +7,25 @@ export const registerThunk = createAsyncThunk(
         console.log(profile);
 
         try {
-        } catch (error) {}
+            const user = await authAPI.registerUser(profile);
+            console.log(user);
+            return user;
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 );
 
 export const loginThunk = createAsyncThunk('auth/login', async loginData => {
     console.log(loginData);
     try {
-    } catch (error) {}
+        return await authAPI.loginUser(loginData);
+    } catch (error) {
+        console.log(error.message);
+    }
 });
 
-export const logOutThunk = createAsyncThunk('auth/logout', async () => {
+export const logoutThunk = createAsyncThunk('auth/logout', async () => {
     console.log('logoutThunk');
     try {
     } catch (error) {}

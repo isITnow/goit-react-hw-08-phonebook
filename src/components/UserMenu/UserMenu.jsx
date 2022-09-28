@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 // import s from './userMenu.module.css';
 import { useDispatch } from 'react-redux';
-import { logOutThunk } from 'redux/auth/operations-auth';
+import { logoutThunk } from 'redux/auth/operations-auth';
 
 import Button from 'react-bootstrap/Button';
 
@@ -10,7 +10,7 @@ const UserMenu = () => {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
-        dispatch(logOutThunk());
+        dispatch(logoutThunk());
     };
 
     return (
