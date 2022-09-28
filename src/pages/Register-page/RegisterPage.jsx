@@ -6,7 +6,7 @@ import React from 'react';
 const RegisterPage = () => {
     return (
         <div>
-            <h1>Registration form</h1>
+            <h2>Registration form</h2>
 
             <form
                 onSubmit={console.log('RegForm Click')}
@@ -14,7 +14,7 @@ const RegisterPage = () => {
                 autoComplete="off"
             >
                 <label className="#">
-                    Имя
+                    Name
                     <input
                         type="text"
                         name="name"
@@ -34,7 +34,7 @@ const RegisterPage = () => {
                 </label>
 
                 <label className="#">
-                    Пароль
+                    Password
                     <input
                         type="password"
                         name="password"
