@@ -1,10 +1,10 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Form from './Form';
-import ContactsList from './ContactsList';
-import Filter from './Filter';
-import Container from './Container';
+import Form from './components/Form';
+import ContactsList from './components/ContactsList';
+import Filter from './components/Filter';
+import Container from './components/Container';
 
 export const App = () => {
     return (

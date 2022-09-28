@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo } from 'react';
 import { ContactsItem } from '././ContactsItem';
-import { fetchContactsThunk } from 'redux/operations';
+import { fetchContactsThunk } from 'redux/contacts/operations-contacts';
 import { FallingLines } from 'react-loader-spinner';
 import s from './ContactsList.module.css';
 import { selectContacts, selectFilter, selectIsLoading } from 'redux/selector';
