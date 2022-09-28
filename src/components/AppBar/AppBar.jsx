@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import AuthNav from 'components/AuthNav';
 
 import s from './appBar.module.css';
+import UserMenu from 'components/UserMenu';
 
 const AppBar = () => {
     return (
@@ -11,6 +12,7 @@ const AppBar = () => {
             <NavLink to="/">Homepage</NavLink>
             <NavLink to="/contacts">Contacts</NavLink>
             <AuthNav />
+            <UserMenu />
         </header>
     );
 };
