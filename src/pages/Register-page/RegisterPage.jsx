@@ -54,7 +54,7 @@ const RegisterPage = () => {
 
             <Form onSubmit={handleFormsubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label>Your name</Form.Label>
                     <Form.Control
                         type="text"
                         name="name"
