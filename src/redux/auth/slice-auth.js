@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { registerThunk, loginThunk, logoutThunk } from './operations-auth';
 
 const initStateAuth = {
-    user: {},
+    user: { name: null, email: null },
     token: null,
     isLoggedIn: false,
 };
@@ -23,6 +23,9 @@ export const authSlice = createSlice({
         },
         [logoutThunk.fulfilled]: (state, { payload }) => {
             console.log('slice-logout');
+            state.user = { name: null, email: null };
+            state.token = null;
+            state.isLoggedIn = true;
         },
     },
 });
