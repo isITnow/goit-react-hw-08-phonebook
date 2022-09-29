@@ -2,22 +2,27 @@ import { useDispatch } from 'react-redux';
 import { deleteContactThunk } from 'redux/contacts/operations-contacts';
 import PropTypes from 'prop-types';
 import s from './ContactsItem.module.css';
+import CloseButton from 'react-bootstrap/CloseButton';
 
 export const ContactsItem = ({ name, phone, id }) => {
     const dispatch = useDispatch();
 
     return (
-        <li className={s.contact__item}>
+        <div className={s.contact__item}>
             <span>{name}</span>
             <span className={s.phone}>{phone}</span>
-            <button
+            <CloseButton
+                type="button"
+                onClick={() => dispatch(deleteContactThunk(id))}
+            />
+            {/* <button
                 className={s.btn}
                 type="button"
                 onClick={() => dispatch(deleteContactThunk(id))}
             >
                 Delete
-            </button>
-        </li>
+            </button> */}
+        </div>
     );
 };
 

@@ -24,7 +24,7 @@ const UserMenu = () => {
             {/* <button type="button" onClick={console.log('Click')}>
                 Logout
             </button> */}
-            <Button onClick={handleLogout} variant="primary" type="submit">
+            <Button onClick={handleLogout} variant="light" type="submit">
                 Logout
             </Button>
         </div>

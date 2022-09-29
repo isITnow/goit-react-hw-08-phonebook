@@ -8,7 +8,11 @@ import {
     selectIsLoading,
 } from 'redux/contacts/selector-contacts';
 
-const Form = () => {
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Button from 'react-bootstrap/Button';
+
+const Form1 = () => {
     const contacts = useSelector(selectContacts);
     const isLoading = useSelector(selectIsLoading);
     const dispatch = useDispatch();
@@ -57,7 +61,42 @@ const Form = () => {
     return (
         <div>
             <form className={s.form} onSubmit={handleFormSubmit}>
-                <label className="form__name">
+                <InputGroup className="mb-3">
+                    <InputGroup.Text id="inputGroup-sizing-default">
+                        Name
+                    </InputGroup.Text>
+                    <Form.Control
+                        value={name}
+                        onChange={handleInputChange}
+                        type="text"
+                        name="name"
+                        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                        required
+                        aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default"
+                    />
+                </InputGroup>
+                <InputGroup className="mb-3">
+                    <InputGroup.Text id="inputGroup-sizing-default">
+                        Number
+                    </InputGroup.Text>
+                    <Form.Control
+                        value={number}
+                        onChange={handleInputChange}
+                        type="tel"
+                        name="number"
+                        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                        required
+                        aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default"
+                    />
+                </InputGroup>
+                <Button disabled={isLoading} type="submit" variant="primary">
+                    {isLoading ? 'Loading....' : 'Add contact'}
+                </Button>
+                {/* <label className="form__name">
                     Name
                     <input
                         className={s.form__input}
@@ -69,8 +108,8 @@ const Form = () => {
                         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                         required
                     />
-                </label>
-                <label className="form__phone">
+                </label> */}
+                {/* <label className="form__phone">
                     Number
                     <input
                         className={s.form__input}
@@ -82,17 +121,17 @@ const Form = () => {
                         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                         required
                     />
-                </label>
-                <button
+                </label> */}
+                {/* <button
                     className={s.form__btn}
                     disabled={isLoading}
                     type="submit"
                 >
                     Add contact
-                </button>
+                </button> */}
             </form>
         </div>
     );
 };
 
-export default Form;
+export default Form1;

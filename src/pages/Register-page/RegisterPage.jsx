@@ -8,6 +8,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 import { registerThunk } from 'redux/auth/operations-auth';
+import { toast } from 'react-toastify';
+import Container from 'components/Container';
 
 const RegisterPage = () => {
     const [name, setName] = useState('');
@@ -41,6 +43,7 @@ const RegisterPage = () => {
         try {
             const profile = { name, email, password };
             await dispatch(registerThunk(profile)).unwrap();
+            toast.success(`Welcome, ${name}`);
             navigate('/', { replace: true });
             formReset();
         } catch (error) {}
@@ -53,7 +56,7 @@ const RegisterPage = () => {
     };
 
     return (
-        <div>
+        <Container>
             <h2>Registration form</h2>
 
             <Form onSubmit={handleFormsubmit}>
@@ -137,7 +140,7 @@ const RegisterPage = () => {
 
                 <button type="submit">Registration</button> */}
             {/* </form> */}
-        </div>
+        </Container>
     );
 };
 

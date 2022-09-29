@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { toast } from 'react-toastify';
+import Container from 'components/Container';
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
@@ -36,6 +38,7 @@ const LoginPage = () => {
         try {
             const loginData = { email, password };
             await dispatch(loginThunk(loginData)).unwrap();
+            toast.success(`Happy to see You again`);
             navigate('/', { replace: true });
             formReset();
         } catch (error) {}
@@ -47,7 +50,7 @@ const LoginPage = () => {
     };
 
     return (
-        <div>
+        <Container>
             <h2>Login</h2>
             <Form onSubmit={handleFormsubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -105,7 +108,7 @@ const LoginPage = () => {
                 </label>
                 <button type="submit">Login</button>
             </form> */}
-        </div>
+        </Container>
     );
 };
 

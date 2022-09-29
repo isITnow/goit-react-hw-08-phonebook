@@ -3,12 +3,14 @@ import { useEffect, useMemo } from 'react';
 import { ContactsItem } from '././ContactsItem';
 import { fetchContactsThunk } from 'redux/contacts/operations-contacts';
 import { FallingLines } from 'react-loader-spinner';
-import s from './ContactsList.module.css';
+// import s from './ContactsList.module.css';
 import {
     selectContacts,
     selectFilter,
     selectIsLoading,
 } from 'redux/contacts/selector-contacts';
+
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const ContactsList = () => {
     const isLoading = useSelector(selectIsLoading);
@@ -49,18 +51,22 @@ const ContactsList = () => {
 
     return (
         <div>
-            <ul className={s.contacts__list}>
+            <ListGroup variant="flush">
+                {/* <ul className={s.contacts__list}> */}
                 {filteredContacts.map(({ name, number, id }) => {
                     return (
-                        <ContactsItem
-                            key={id}
-                            name={name}
-                            phone={number}
-                            id={id}
-                        />
+                        <ListGroup.Item key={id}>
+                            <ContactsItem
+                                // key={id}
+                                name={name}
+                                phone={number}
+                                id={id}
+                            />
+                        </ListGroup.Item>
                     );
                 })}
-            </ul>
+            </ListGroup>
+            {/* </ul> */}
         </div>
     );
 };
