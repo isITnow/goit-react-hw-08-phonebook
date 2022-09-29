@@ -98,7 +98,7 @@ const FormContacts = () => {
                     type="submit"
                     variant="outline-primary"
                 >
-                    {isLoading ? 'Loading....' : 'Add contact'}
+                    {isLoading ? 'Loading.....' : 'Add contact'}
                 </Button>
             </form>
         </div>
