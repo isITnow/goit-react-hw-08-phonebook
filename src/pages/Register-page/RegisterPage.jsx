@@ -60,13 +60,13 @@ const RegisterPage = () => {
 
             <Form onSubmit={handleFormsubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Your name</Form.Label>
+                    <Form.Label>Name</Form.Label>
                     <Form.Control
                         type="text"
                         name="name"
                         value={name}
                         onChange={handleInputChange}
-                        placeholder="Your name"
+                        placeholder="Enter name"
                         required
                     />
                 </Form.Group>

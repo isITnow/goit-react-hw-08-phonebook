@@ -75,7 +75,7 @@ const LoginPage = () => {
                         name="password"
                         value={password}
                         onChange={handleInputChange}
-                        placeholder="Password"
+                        placeholder="Enter password"
                         required
                     />
                 </Form.Group>
