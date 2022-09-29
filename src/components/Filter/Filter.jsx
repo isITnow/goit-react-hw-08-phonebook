@@ -8,7 +8,6 @@ import InputGroup from 'react-bootstrap/InputGroup';
 
 const Filter = () => {
     const [filter, setFilter] = useState('');
-
     const dispatch = useDispatch();
 
     const handleFilterChange = evt => {
@@ -32,16 +31,6 @@ const Filter = () => {
                     aria-describedby="inputGroup-sizing-default"
                 />
             </InputGroup>
-            {/* <label className={s.label}>
-                Find contacts by name
-                <input
-                    className={s.input}
-                    name="filter"
-                    type="text"
-                    value={filter}
-                    onChange={handleFilterChange}
-                />
-            </label> */}
         </div>
     );
 };

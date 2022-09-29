@@ -1,13 +1,11 @@
-// import PropTypes from 'types';
 // import s from './loginPage.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from 'redux/auth/operations-auth';
 import { useNavigate } from 'react-router-dom';
-
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { toast } from 'react-toastify';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Container from 'components/Container';
 
 const LoginPage = () => {
@@ -41,7 +39,9 @@ const LoginPage = () => {
             toast.success(`Happy to see You again`);
             navigate('/', { replace: true });
             formReset();
-        } catch (error) {}
+        } catch (error) {
+            toast.error(`${error.message}`);
+        }
     };
 
     const formReset = () => {
@@ -83,34 +83,8 @@ const LoginPage = () => {
                     Login
                 </Button>
             </Form>
-            {/* <form
-                onSubmit={handleFormsubmit}
-                className={s.form}
-                autoComplete="on"
-            >
-                <label className={s.label}>
-                    Name
-                    <input
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <label className={s.label}>
-                    Password
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <button type="submit">Login</button>
-            </form> */}
         </Container>
     );
 };
 
 export default LoginPage;
-// LoginPage.propTypes = {};

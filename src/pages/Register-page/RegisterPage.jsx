@@ -1,15 +1,12 @@
-// import PropTypes from 'prop-types';
 // import s from './rogisterPage.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-
 import { registerThunk } from 'redux/auth/operations-auth';
-import { toast } from 'react-toastify';
 import Container from 'components/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
     const [name, setName] = useState('');
@@ -46,7 +43,9 @@ const RegisterPage = () => {
             toast.success(`Welcome, ${name}`);
             navigate('/', { replace: true });
             formReset();
-        } catch (error) {}
+        } catch (error) {
+            toast.error(`${error.message}`);
+        }
     };
 
     const formReset = () => {
@@ -94,7 +93,7 @@ const RegisterPage = () => {
                         name="password"
                         value={password}
                         onChange={handleInputChange}
-                        placeholder="Password"
+                        placeholder="Enter password"
                         required
                     />
                 </Form.Group>
@@ -102,47 +101,8 @@ const RegisterPage = () => {
                     Submit
                 </Button>
             </Form>
-
-            {/* <form
-                onSubmit={handleFormsubmit}
-                className={s.form}
-                autoComplete="off"
-            >
-                <label className={s.label}>
-                    Name
-                    <input
-                        type="text"
-                        name="name"
-                        value={name}
-                        onChange={handleInputChange}
-                    />
-                </label>
-
-                <label className={s.label}>
-                    Email
-                    <input
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={handleInputChange}
-                    />
-                </label>
-
-                <label className={s.label}>
-                    Password
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={handleInputChange}
-                    />
-                </label>
-
-                <button type="submit">Registration</button> */}
-            {/* </form> */}
         </Container>
     );
 };
 
 export default RegisterPage;
-// RegisterPage.propTypes = {};

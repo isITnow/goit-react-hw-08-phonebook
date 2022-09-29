@@ -1,29 +1,34 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-// import s from './userMenu.module.css';
+import s from './userMenu.module.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { logoutThunk } from 'redux/auth/operations-auth';
-import { FaRegUserCircle } from 'react-icons/fa';
+import { GrUserExpert } from 'react-icons/gr';
 import Button from 'react-bootstrap/Button';
 import { selectUserEmail } from 'redux/auth/selector-auth';
 
 const UserMenu = () => {
     const dispatch = useDispatch();
     const userEmail = useSelector(selectUserEmail);
+    const navigate = useNavigate();
 
-    const handleLogout = () => {
-        dispatch(logoutThunk());
+    const handleLogout = async () => {
+        try {
+            await dispatch(logoutThunk()).unwrap();
+            navigate('/', { replace: true });
+        } catch (error) {}
     };
 
     return (
-        <div>
-            <span>
-                <FaRegUserCircle /> User: {userEmail}
+        <div className={s.menu}>
+            <span className={s.name}>
+                <GrUserExpert /> User: {userEmail}
             </span>
-            {/* <button type="button" onClick={console.log('Click')}>
-                Logout
-            </button> */}
-            <Button onClick={handleLogout} variant="light" type="submit">
+            <Button
+                onClick={handleLogout}
+                variant="outline-primary"
+                type="submit"
+            >
                 Logout
             </Button>
         </div>
@@ -31,4 +36,3 @@ const UserMenu = () => {
 };
 
 export default UserMenu;
-// UserMenu.propTypes = {};

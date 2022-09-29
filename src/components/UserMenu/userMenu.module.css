@@ -1,0 +1,9 @@
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    padding: 12px;
+    font-weight: 500;
+}

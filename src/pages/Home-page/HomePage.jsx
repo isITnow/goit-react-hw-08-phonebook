@@ -1,4 +1,4 @@
-// import s from './homePage.module.css';
+import s from './homePage.module.css';
 
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectUserName } from 'redux/auth/selector-auth';
@@ -8,10 +8,10 @@ const HomePage = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
     return (
-        <h1>
+        <h1 className={s.title}>
             {isLoggedIn
                 ? `Welcome back, ${userName}!`
-                : 'Welcome to our website. Please, login to continue.'}
+                : 'Welcome! Please, login to continue.'}
         </h1>
     );
 };
