@@ -1,10 +1,12 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteContactThunk } from 'redux/contacts/operations-contacts';
 import PropTypes from 'prop-types';
 import s from './ContactsItem.module.css';
 import CloseButton from 'react-bootstrap/CloseButton';
+import { selectIsLoading } from 'redux/contacts/selector-contacts';
 
 export const ContactsItem = ({ name, phone, id }) => {
+    const isLoading = useSelector(selectIsLoading);
     const dispatch = useDispatch();
 
     return (
@@ -12,6 +14,7 @@ export const ContactsItem = ({ name, phone, id }) => {
             <span>{name}</span>
             <span className={s.phone}>{phone}</span>
             <CloseButton
+                disabled={isLoading}
                 type="button"
                 onClick={() => dispatch(deleteContactThunk(id))}
             />

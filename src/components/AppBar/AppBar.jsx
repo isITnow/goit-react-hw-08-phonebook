@@ -8,14 +8,21 @@ import UserMenu from 'components/UserMenu';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/selector-auth';
 // import Nav from 'react-bootstrap/Nav';
+const getActiveClassName = ({ isActive }) => {
+    return isActive ? `${s.item} ${s.active}` : s.item;
+};
 
 const AppBar = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
     return (
         <header className={s.header}>
-            <NavLink to="/">Homepage</NavLink>
-            <NavLink to="/contacts">Contacts</NavLink>
+            <NavLink className={getActiveClassName} end to="/">
+                Homepage
+            </NavLink>
+            <NavLink className={getActiveClassName} to="/contacts">
+                Contacts
+            </NavLink>
             {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </header>
     );

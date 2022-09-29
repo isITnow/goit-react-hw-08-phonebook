@@ -18,7 +18,6 @@ const UserMenu = () => {
     return (
         <div>
             <span>
-                {' '}
                 <FaRegUserCircle /> User: {userEmail}
             </span>
             {/* <button type="button" onClick={console.log('Click')}>

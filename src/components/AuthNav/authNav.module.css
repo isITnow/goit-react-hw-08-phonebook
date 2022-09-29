@@ -1,0 +1,12 @@
+.item {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px;
+    font-weight: 700;
+    color: #2A363B;
+}
+
+.item.active {
+    color: rgb(66, 66, 255);
+    scale: 1.1;
+}

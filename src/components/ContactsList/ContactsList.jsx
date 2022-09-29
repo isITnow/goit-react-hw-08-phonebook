@@ -2,18 +2,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useMemo } from 'react';
 import { ContactsItem } from '././ContactsItem';
 import { fetchContactsThunk } from 'redux/contacts/operations-contacts';
-import { FallingLines } from 'react-loader-spinner';
+// import { FallingLines } from 'react-loader-spinner';
 // import s from './ContactsList.module.css';
 import {
     selectContacts,
     selectFilter,
-    selectIsLoading,
+    // selectIsLoading,
 } from 'redux/contacts/selector-contacts';
 
 import ListGroup from 'react-bootstrap/ListGroup';
 
 const ContactsList = () => {
-    const isLoading = useSelector(selectIsLoading);
+    // const isLoading = useSelector(selectIsLoading);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -30,16 +30,16 @@ const ContactsList = () => {
         );
     }, [contacts, filter]);
 
-    if (isLoading) {
-        return (
-            <FallingLines
-                color="#424242"
-                width="100"
-                visible={true}
-                ariaLabel="falling-lines-loading"
-            />
-        );
-    }
+    // if (isLoading) {
+    //     return (
+    //         <FallingLines
+    //             color="#424242"
+    //             width="100"
+    //             visible={true}
+    //             ariaLabel="falling-lines-loading"
+    //         />
+    //     );
+    // }
 
     if (!contacts.length) {
         return <p>List is empty</p>;
