@@ -1,40 +1,21 @@
-import axios from 'axios';
-
-// const instance = axios.create({
-//     baseURL: 'https://connections-api.herokuapp.com/',
-//     params: {},
-// });
-
-const headerToken = {
-    set(token) {
-        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    },
-    unset() {
-        axios.defaults.headers.common.Authorization = '';
-    },
-};
-
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+import { privateAPI, publicAPI } from './http/http';
 
 const registerUser = async profile => {
-    const { data } = await axios.post('/users/signup', profile);
-    headerToken.set(data.token);
+    const { data } = await publicAPI.post('/users/signup', profile);
     return data;
 };
 
 const loginUser = async loginData => {
-    const { data } = await axios.post('/users/login', loginData);
-    headerToken.set(data.token);
+    const { data } = await publicAPI.post('/users/login', loginData);
     return data;
 };
 
-const logoutUser = async id => {
-    await axios.delete(`/users/logout`);
-    headerToken.unset();
+const logoutUser = async () => {
+    await privateAPI.post(`/users/logout`);
 };
 
 const getCurrentUser = async () => {
-    const { data } = await axios.get('/users/current');
+    const { data } = await privateAPI.get('/users/current');
     return data;
 };
 
@@ -43,5 +24,4 @@ export const authAPI = {
     loginUser,
     logoutUser,
     getCurrentUser,
-    headerToken,
 };

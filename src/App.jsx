@@ -11,11 +11,11 @@ import { refreshUserThunk } from 'redux/auth/operations-auth';
 import { useDispatch } from 'react-redux';
 
 export const App = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(refreshUserThunk());
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(refreshUserThunk());
+    // }, [dispatch]);
 
     return (
         <>

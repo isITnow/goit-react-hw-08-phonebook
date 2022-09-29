@@ -30,12 +30,12 @@ export const authSlice = createSlice({
             console.log('slice-logout');
             state.user = { name: null, email: null };
             state.token = null;
-            state.isLoggedIn = true;
+            state.isLoggedIn = false;
         },
         [refreshUserThunk.fulfilled]: (state, { payload }) => {
             console.log(payload);
             state.user = payload;
-            state.isLoggedIn = true;
+            // state.isLoggedIn = true;
         },
     },
 });

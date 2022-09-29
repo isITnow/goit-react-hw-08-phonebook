@@ -1,11 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { authAPI } from 'services/authAPI';
+import { token } from 'services/http/http';
 
 export const registerThunk = createAsyncThunk(
     'auth/register',
     async profile => {
         try {
             const user = await authAPI.registerUser(profile);
+            token.set(user.token);
             return user;
         } catch (error) {
             console.log(error.message);
@@ -15,7 +17,9 @@ export const registerThunk = createAsyncThunk(
 
 export const loginThunk = createAsyncThunk('auth/login', async loginData => {
     try {
-        return await authAPI.loginUser(loginData);
+        const data = await authAPI.loginUser(loginData);
+        token.set(data.token);
+        return data;
     } catch (error) {
         console.log(error.message);
     }
@@ -23,6 +27,8 @@ export const loginThunk = createAsyncThunk('auth/login', async loginData => {
 
 export const logoutThunk = createAsyncThunk('auth/logout', async () => {
     try {
+        await authAPI.logoutUser();
+        token.unset();
     } catch (error) {
         console.log(error.message);
     }
@@ -30,14 +36,14 @@ export const logoutThunk = createAsyncThunk('auth/logout', async () => {
 
 export const refreshUserThunk = createAsyncThunk(
     'auth/refres',
-    async (_, thunkAPI) => {
-        const state = thunkAPI.getState();
+    async (_, { getState }) => {
+        const state = getState();
         const persistedToken = state.user.token;
-        if (persistedToken === null) {
-            return;
-        }
         try {
-            authAPI.headerToken.set(persistedToken);
+            if (persistedToken === null) {
+                return;
+            }
+            token.set(persistedToken);
             return await authAPI.getCurrentUser();
         } catch (error) {
             console.log(error.message);
