@@ -41,6 +41,7 @@ export const refreshUserThunk = createAsyncThunk(
         const persistedToken = state.user.token;
         try {
             if (persistedToken === null) {
+                console.log('persistedToken пустой, уходим');
                 return;
             }
             token.set(persistedToken);

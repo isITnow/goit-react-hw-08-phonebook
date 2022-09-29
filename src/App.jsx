@@ -8,14 +8,18 @@ import ContactsPage from 'pages/Contacts-page';
 import HomePage from 'pages/Home-page';
 import AppBar from 'components/AppBar';
 import { refreshUserThunk } from 'redux/auth/operations-auth';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectToken } from 'redux/auth/selector-auth';
 
 export const App = () => {
-    // const dispatch = useDispatch();
+    const token = useSelector(selectToken);
+    const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(refreshUserThunk());
-    // }, [dispatch]);
+    useEffect(() => {
+        if (token) {
+            dispatch(refreshUserThunk());
+        }
+    }, [dispatch, token]);
 
     return (
         <>
@@ -26,13 +30,6 @@ export const App = () => {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/contacts" element={<ContactsPage />} />
             </Routes>
-            {/* <Container>
-                <h1>Phonebook</h1>
-                <Form />
-                <h2 className="contacts__title">Contacts</h2>
-                <Filter />
-                <ContactsList />
-            </Container> */}
             <ToastContainer />
         </>
     );

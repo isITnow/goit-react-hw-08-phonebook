@@ -2,6 +2,7 @@
 // import s from './rogisterPage.module.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -12,6 +13,7 @@ const RegisterPage = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -34,12 +36,14 @@ const RegisterPage = () => {
         }
     };
 
-    const handleFormsubmit = evt => {
+    const handleFormsubmit = async evt => {
         evt.preventDefault();
-        console.log('Send form');
-        const profile = { name, email, password };
-        dispatch(registerThunk(profile));
-        formReset();
+        try {
+            const profile = { name, email, password };
+            await dispatch(registerThunk(profile)).unwrap();
+            navigate('/', { replace: true });
+            formReset();
+        } catch (error) {}
     };
 
     const formReset = () => {

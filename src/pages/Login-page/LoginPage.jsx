@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from 'redux/auth/operations-auth';
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -10,6 +11,7 @@ import Form from 'react-bootstrap/Form';
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -29,12 +31,14 @@ const LoginPage = () => {
         }
     };
 
-    const handleFormsubmit = evt => {
+    const handleFormsubmit = async evt => {
         evt.preventDefault();
-        console.log('Login submit');
-        const loginData = { email, password };
-        dispatch(loginThunk(loginData));
-        formReset();
+        try {
+            const loginData = { email, password };
+            await dispatch(loginThunk(loginData)).unwrap();
+            navigate('/', { replace: true });
+            formReset();
+        } catch (error) {}
     };
 
     const formReset = () => {

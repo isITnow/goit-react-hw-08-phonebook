@@ -27,15 +27,13 @@ export const authSlice = createSlice({
             state.isLoggedIn = true;
         },
         [logoutThunk.fulfilled]: state => {
-            console.log('slice-logout');
             state.user = { name: null, email: null };
             state.token = null;
             state.isLoggedIn = false;
         },
         [refreshUserThunk.fulfilled]: (state, { payload }) => {
-            console.log(payload);
             state.user = payload;
-            // state.isLoggedIn = true;
+            state.isLoggedIn = true;
         },
     },
 });
