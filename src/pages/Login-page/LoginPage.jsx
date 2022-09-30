@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from 'redux/auth/operations-auth';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -11,7 +10,6 @@ import Container from 'components/Container';
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -37,7 +35,6 @@ const LoginPage = () => {
             const loginData = { email, password };
             await dispatch(loginThunk(loginData)).unwrap();
             toast.success(`Happy to see You again`);
-            navigate('/', { replace: true });
             formReset();
         } catch (error) {
             toast.error('Something went wrong');

@@ -7,7 +7,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #2A363B;
+    border-bottom: 2px solid #2A363B;
     /* box-shadow: 0px 9px 5px -4px rgba(0, 0, 0, 0.38); */
 }
 
@@ -26,10 +26,19 @@
     transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.logo {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-color: blue;
-    border-right: 50%;
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 12px;
+    display: inline-flex;
+    height: 40px;
+    width: 40px;
+    border-radius: 2px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../../images/img.png');
 }

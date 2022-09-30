@@ -11,12 +11,19 @@ const HomePage = () => {
     return (
         <div className={s.home__page}>
             {isLoggedIn ? (
-                <h1 className={s.title}>{`Welcome back, ${userName}!`}</h1>
+                <div className={s.box}>
+                    <h2 className={s.title}>{`Welcome, ${userName}!`}</h2>
+                    <p className={s.text}>
+                        <TbNotebook />
+                        open <b>Contacts</b> tab to see your personal list of
+                        names and phone numbers of people and businesses
+                    </p>
+                </div>
             ) : (
-                <div>
-                    <h1 className={s.title}>
-                        Welcome! Please, login to continue.
-                    </h1>
+                <div className={s.box}>
+                    <h2 className={s.title}>
+                        Welcome! Please, login or register to continue.
+                    </h2>
                     <p className={s.text}>
                         <TbNotebook />
                         this phone book was created for your convenience. it

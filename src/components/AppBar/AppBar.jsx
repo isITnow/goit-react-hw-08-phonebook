@@ -18,6 +18,7 @@ const AppBar = () => {
     return (
         <header className={s.header}>
             <div className={s.navigation}>
+                <span class={s.icon}></span>
                 <NavLink className={getActiveClassName} end to="/">
                     Phonebook
                 </NavLink>
@@ -38,14 +39,12 @@ const AppBar = () => {
                         color="#5252f8"
                         ariaLabel="three-dots-loading"
                         wrapperStyle={{}}
-                        wrapperClassName=""
                         visible={true}
                     />
                 )
             ) : (
                 <AuthNav />
             )}
-            {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
         </header>
     );
 };

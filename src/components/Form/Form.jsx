@@ -11,6 +11,7 @@ import s from './Form.module.css';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
+import { ThreeDots } from 'react-loader-spinner';
 
 const FormContacts = () => {
     const contacts = useSelector(selectContacts);
@@ -98,7 +99,19 @@ const FormContacts = () => {
                     type="submit"
                     variant="outline-primary"
                 >
-                    {isLoading ? 'Loading.....' : 'Add contact'}
+                    {isLoading ? (
+                        <ThreeDots
+                            height="30"
+                            width="35"
+                            radius="9"
+                            color="#5252f8"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            visible={true}
+                        />
+                    ) : (
+                        'Add contact'
+                    )}
                 </Button>
             </form>
         </div>

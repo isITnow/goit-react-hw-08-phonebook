@@ -7,6 +7,8 @@ import { refreshUserThunk } from 'redux/auth/operations-auth';
 import { selectToken } from 'redux/auth/selector-auth';
 
 import AppBar from 'components/AppBar';
+import PublicRoute from 'components/PublicRoute';
+import PrivateRoute from 'components/PrivateRoute';
 const HomePage = lazy(() => import('pages/Home-page'));
 const RegisterPage = lazy(() => import('pages/Register-page'));
 const LoginPage = lazy(() => import('pages/Login-page'));
@@ -28,9 +30,13 @@ export const App = () => {
             <Suspense fallback={null}>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
-                    <Route path="/register" element={<RegisterPage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/contacts" element={<ContactsPage />} />
+                    <Route path="/" element={<PublicRoute />}>
+                        <Route path="/register" element={<RegisterPage />} />
+                        <Route path="/login" element={<LoginPage />} />
+                    </Route>
+                    <Route path="/" element={<PrivateRoute />}>
+                        <Route path="/contacts" element={<ContactsPage />} />
+                    </Route>
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </Suspense>
