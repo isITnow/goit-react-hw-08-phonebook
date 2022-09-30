@@ -1,10 +1,10 @@
-// import PropTypes from 'prop-types';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AuthNav from 'components/AuthNav';
 import UserMenu from 'components/UserMenu';
-import { selectIsLoggedIn } from 'redux/auth/selector-auth';
+import { selectIsLoggedIn, selectToken } from 'redux/auth/selector-auth';
+import { ThreeDots } from 'react-loader-spinner';
 import s from './appBar.module.css';
 
 const getActiveClassName = ({ isActive }) => {
@@ -13,7 +13,7 @@ const getActiveClassName = ({ isActive }) => {
 
 const AppBar = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
-    // const tokenStatus = useSelector(selectToken);
+    const tokenStatus = useSelector(selectToken);
 
     return (
         <header className={s.header}>
@@ -27,8 +27,25 @@ const AppBar = () => {
                     </NavLink>
                 )}
             </div>
-            {/* {tokenStatus || <AuthNav /> ? <UserMenu /> : <p>Loading....</p>} */}
-            {isLoggedIn ? <UserMenu /> : <AuthNav />}
+            {tokenStatus ? (
+                isLoggedIn ? (
+                    <UserMenu />
+                ) : (
+                    <ThreeDots
+                        height="50"
+                        width="50"
+                        radius="9"
+                        color="#5252f8"
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClassName=""
+                        visible={true}
+                    />
+                )
+            ) : (
+                <AuthNav />
+            )}
+            {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
         </header>
     );
 };

@@ -40,7 +40,7 @@ const LoginPage = () => {
             navigate('/', { replace: true });
             formReset();
         } catch (error) {
-            toast.error(`${error.message}`);
+            toast.error('Something went wrong');
         }
     };
 
