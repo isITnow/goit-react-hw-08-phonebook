@@ -36,7 +36,7 @@ export const logoutThunk = createAsyncThunk('auth/logout', async () => {
 
 export const refreshUserThunk = createAsyncThunk(
     'auth/refres',
-    async (_, { getState }) => {
+    async (_, { getState, rejectWithValue }) => {
         const state = getState();
         const persistedToken = state.user.token;
         try {
@@ -46,7 +46,7 @@ export const refreshUserThunk = createAsyncThunk(
             token.set(persistedToken);
             return await authAPI.getCurrentUser();
         } catch (error) {
-            console.log(error.message);
+            return rejectWithValue();
         }
     }
 );

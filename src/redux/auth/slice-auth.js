@@ -35,5 +35,10 @@ export const authSlice = createSlice({
             state.user = payload;
             state.isLoggedIn = true;
         },
+        [refreshUserThunk.rejected]: state => {
+            state.user = { name: null, email: null };
+            state.token = null;
+            state.isLoggedIn = false;
+        },
     },
 });

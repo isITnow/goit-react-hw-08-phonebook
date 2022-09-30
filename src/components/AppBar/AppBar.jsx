@@ -13,6 +13,7 @@ const getActiveClassName = ({ isActive }) => {
 
 const AppBar = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
+    // const tokenStatus = useSelector(selectToken);
 
     return (
         <header className={s.header}>
@@ -26,6 +27,7 @@ const AppBar = () => {
                     </NavLink>
                 )}
             </div>
+            {/* {tokenStatus || <AuthNav /> ? <UserMenu /> : <p>Loading....</p>} */}
             {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </header>
     );
