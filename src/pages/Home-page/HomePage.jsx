@@ -14,7 +14,7 @@ const HomePage = () => {
                 <div className={s.box}>
                     <h2 className={s.title}>{`Welcome, ${userName}!`}</h2>
                     <p className={s.text}>
-                        <TbNotebook />
+                        <TbNotebook size={23} />
                         open <b>Contacts</b> tab to see your personal list of
                         names and phone numbers of people and businesses
                     </p>
@@ -25,7 +25,7 @@ const HomePage = () => {
                         Welcome! Please, login or register to continue.
                     </h2>
                     <p className={s.text}>
-                        <TbNotebook />
+                        <TbNotebook size={23} />
                         this phone book was created for your convenience. it
                         stores list of names and phone numbers of people and
                         businesses

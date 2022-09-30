@@ -18,13 +18,6 @@ export const ContactsItem = ({ name, phone, id }) => {
                 type="button"
                 onClick={() => dispatch(deleteContactThunk(id))}
             />
-            {/* <button
-                className={s.btn}
-                type="button"
-                onClick={() => dispatch(deleteContactThunk(id))}
-            >
-                Delete
-            </button> */}
         </div>
     );
 };

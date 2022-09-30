@@ -22,7 +22,7 @@ const UserMenu = () => {
     return (
         <div className={s.menu}>
             <span className={s.name}>
-                <GrUserExpert /> {userEmail}
+                <GrUserExpert size={23} /> {userEmail}
             </span>
             <Button
                 onClick={handleLogout}

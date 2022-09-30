@@ -50,7 +50,6 @@ export const contactsSlice = createSlice({
 
         [deleteContactThunk.fulfilled]: (state, { payload }) => {
             state.isLoading = false;
-            state.contacts.filter(contact => contact.id !== payload);
         },
         [deleteContactThunk.rejected]: (state, { payload }) => {
             state.isLoading = false;

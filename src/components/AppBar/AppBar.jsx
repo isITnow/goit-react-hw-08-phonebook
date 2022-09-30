@@ -18,7 +18,7 @@ const AppBar = () => {
     return (
         <header className={s.header}>
             <div className={s.navigation}>
-                <span class={s.icon}></span>
+                <span className={s.icon}></span>
                 <NavLink className={getActiveClassName} end to="/">
                     Phonebook
                 </NavLink>
